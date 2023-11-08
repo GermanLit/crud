@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ваша Библиотека</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Blog</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/">Главная</a>
+        <a class="p-2 text-dark" href="/blog">Библиотека</a>
+        <a class="p-2 text-dark" href="/blog/add">Добавить книгу</a>
+        <a class="p-2 text-dark" href="/about">Про нас</a>
+    </nav>
+</div>
+
+<center class="controller mt-5">
+    <div th:each="el : ${post}" class="alert alert-info mt-2">
+        <h1 th:text="${el.title}"/>
+        <p th:text="${el.full_text}"/>
+        <p><b>Просмотры:</b> <span th:text="${el.views}"/></p>
+        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-primary my-2">Редактировать</a><br><br>
+        <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+            <button class="btn btn-primary my-2" type="submit">Удалить</button>
+        </form>
+    </div>
+</center>
+
+<footer class="text-body-secondary py-5">
+    <div class="container">
+        <p class="float-end mb-1">
+            <a href="#">Back to top</a>
+        </p>
+        <p class="mb-1">Album example is © Bootstrap, but please download and customize it for yourself!</p>
+        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
+    </div>
+</footer>
+</body>
+</html>

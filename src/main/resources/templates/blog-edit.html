@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование книги</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Blog</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/">Главная</a>
+        <a class="p-2 text-dark" href="/blog">Библиотека</a>
+        <a class="p-2 text-dark" href="/blog/add">Добавить книгу</a>
+        <a class="p-2 text-dark" href="/about">Про нас</a>
+    </nav>
+</div>
+
+<center class="controller mt-5">
+    <h1>Редактирование книги</h1><br>
+    <div th:each="el : ${post}">
+        <form method="post">
+            <input type="text" th:value="${el.title}" name="title" placeholder="Введите название книги" class="from-control"><br><br>
+            <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите автора книги" class="from-control"><br><br>
+            <textarea name="full_text" placeholder="Введите описание книги" class="from-control" th:text="${el.full_text}" /><br><br>
+            <button type="submit" class="btn btn-primary my-2">Обновить</button>
+        </form>
+    </div>
+</center>
+
+</body>
+</html>
