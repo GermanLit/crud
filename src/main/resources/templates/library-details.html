@@ -7,22 +7,23 @@
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Blog</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">Library</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Главная</a>
-        <a class="p-2 text-dark" href="/blog">Библиотека</a>
-        <a class="p-2 text-dark" href="/blog/add">Добавить книгу</a>
+        <a class="p-2 text-dark" href="/library">Библиотека</a>
+        <a class="p-2 text-dark" href="/library/add">Добавить книгу</a>
         <a class="p-2 text-dark" href="/about">Про нас</a>
     </nav>
 </div>
 
 <center class="controller mt-5">
-    <div th:each="el : ${post}" class="alert alert-info mt-2">
-        <h1 th:text="${el.title}"/>
-        <p th:text="${el.full_text}"/>
+    <div th:each="el : ${book}" class="alert alert-info mt-2">
+        <h1 th:text="${el.title_book}"/>
+        <h5 th:text="${el.author}"/>
+        <p th:text="${el.book_description}"/>
         <p><b>Просмотры:</b> <span th:text="${el.views}"/></p>
-        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-primary my-2">Редактировать</a><br><br>
-        <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+        <a th:href="'/library/' + ${el.id} + '/edit'" class="btn btn-primary my-2">Редактировать</a><br><br>
+        <form th:action="'/library/' + ${el.id} + '/remove'" method="post">
             <button class="btn btn-primary my-2" type="submit">Удалить</button>
         </form>
     </div>

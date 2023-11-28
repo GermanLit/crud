@@ -8,21 +8,21 @@
 <body>
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Blog</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">Library</h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/">Главная</a>
-        <a class="p-2 text-dark" href="/blog">Библиотека</a>
-        <a class="p-2 text-dark" href="/blog/add">Добавить книгу</a>
+        <a class="p-2 text-dark" href="/library">Библиотека</a>
+        <a class="p-2 text-dark" href="/library/add">Добавить книгу</a>
         <a class="p-2 text-dark" href="/about">Про нас</a>
     </nav>
 </div>
 
 <center class="controller mt-5">
     <h1>Ваша Библиотека</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.title}"/>
-        <p th:text="${el.anons}"/>
-        <a th:href="'/blog/' + ${el.id}" class="btn btn-primary my-2">Детальнее</a>
+    <div th:each="el : ${books}" class="alert alert-info mt-2">
+        <h2 th:text="${el.title_book}"/>
+        <h5 th:text="${el.author}"/>
+        <a th:href="'/library/' + ${el.id}" class="btn btn-primary my-2">Детальнее</a>
     </div>
 </center>
 
