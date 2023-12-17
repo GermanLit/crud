@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Ваша Библиотека</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <title>Ваша Библиотека</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom">
@@ -22,6 +22,7 @@
     <form action="/library/add" method="post">
       <input type="text" name="title_book" placeholder="Введите название книги" class="from-control"><br><br>
       <input type="text" name="author" placeholder="Введите автора книги" class="from-control"><br><br>
+      <input type="text" name="link_to_book" placeholder="Введите ссылку на книгу" class="from-control"><br><br>
       <textarea name="book_description" placeholder="Введите описание книги" class="from-control"></textarea><br><br>
       <button type="submit" class="btn btn-primary my-2">Добавить книгу</button>
     </form>
@@ -30,4 +31,3 @@
 
 </body>
 </html>
-

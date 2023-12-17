@@ -22,6 +22,7 @@
         <form method="post">
             <input type="text" th:value="${el.title_book}" name="title_book" placeholder="Введите название книги" class="from-control"><br><br>
             <input type="text" th:value="${el.author}" name="author" placeholder="Введите автора книги" class="from-control"><br><br>
+            <input type="text" th:value="${el.link_to_book}" name="link_to_book" placeholder="Введите ссылку на книгу" class="from-control"><br><br>
             <textarea name="book_description" placeholder="Введите описание книги" class="from-control" th:text="${el.book_description}" /><br><br>
             <button type="submit" class="btn btn-primary my-2">Обновить</button>
         </form>

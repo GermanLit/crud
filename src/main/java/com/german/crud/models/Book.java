@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+@Entity//делает из обычного класса модель
 public class Book {
 
     @Id
@@ -15,13 +15,14 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title_book, String author, String book_description) {
+    public Book(String title_book, String author, String book_description, String link_to_book) {
         this.title_book = title_book;
         this.author = author;
         this.book_description = book_description;
+        this.link_to_book = link_to_book;
     }
 
-    private String title_book, author, book_description;
+    private String title_book, author, book_description, link_to_book;
     private int views;
 
     public Long getId() {
@@ -56,6 +57,14 @@ public class Book {
         this.book_description = book_description;
     }
 
+    public String getLink_to_book() {
+        return link_to_book;
+    }
+
+    public void setLink_to_book(String link_to_book) {
+        this.link_to_book = link_to_book;
+    }
+
     public int getViews() {
         return views;
     }
@@ -63,5 +72,6 @@ public class Book {
     public void setViews(int views) {
         this.views = views;
     }
+
 
 }

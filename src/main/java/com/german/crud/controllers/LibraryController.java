@@ -20,9 +20,10 @@ public class LibraryController {
     private BookRepository bookRepository;
 
     //функция которая отслеживает определённые url адреса
-    @GetMapping("/library")
-    public String libraryMain(Model model) {
-        Iterable<Book> books = bookRepository.findAll();
+    @GetMapping("/library")//отслеживаем ссылку
+    public String libraryMain(Model model) { //принимаем обьект на основе класса model
+        Iterable<Book> books = bookRepository.findAll();//извлекает все книги из базы данных и сохраняет их в переменной books
+        //После этого эти книги добавляются в модель
         model.addAttribute("books", books);
         return "library-main";
     }
@@ -33,8 +34,8 @@ public class LibraryController {
     }
 
     @PostMapping("/library/add")
-    public String libraryBookAdd(@RequestParam String title_book,@RequestParam String author,@RequestParam String book_description, Model model) {
-        Book book = new Book(title_book, author, book_description);
+    public String libraryBookAdd(@RequestParam String title_book,@RequestParam String author,@RequestParam String book_description,@RequestParam String link_to_book, Model model) {
+        Book book = new Book(title_book, author, book_description, link_to_book);
         bookRepository.save(book);
         return "redirect:/library";
     }
@@ -64,11 +65,12 @@ public class LibraryController {
     }
 
     @PostMapping("/library/{id}/edit")
-    public String libraryBookUpdate(@PathVariable(value = "id") long id, @RequestParam String title_book, @RequestParam String author,@RequestParam String book_description, Model model) {
+    public String libraryBookUpdate(@PathVariable(value = "id") long id, @RequestParam String title_book, @RequestParam String author,@RequestParam String book_description, @RequestParam String link_to_book, Model model) {
         Book book = bookRepository.findById(id).orElseThrow();
         book.setTitle_book(title_book);
         book.setAuthor(author);
         book.setBook_description(book_description);
+        book.setBook_description(link_to_book);
         bookRepository.save(book);
         return "redirect:/library";
     }
@@ -78,6 +80,13 @@ public class LibraryController {
         Book book = bookRepository.findById(id).orElseThrow();
         bookRepository.delete(book);
         return "redirect:/library";
+    }
+
+    @GetMapping("/library/{id}/read")
+    public String libraryMainRead(Model model) {
+        Iterable<Book> books = bookRepository.findAll();
+        model.addAttribute("books", books);
+        return "library-main-read";
     }
 
 }
